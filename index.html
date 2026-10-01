@@ -1,0 +1,2273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Spice Garden Restaurant</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#fffaf5;
+    color:#24170f;
+}
+
+/* ================= HEADER ================= */
+
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+    background:rgba(255,255,255,.96);
+    box-shadow:0 2px 15px rgba(0,0,0,.08);
+}
+
+.navbar{
+    max-width:1200px;
+    margin:auto;
+    height:75px;
+    padding:0 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    font-size:25px;
+    font-weight:800;
+    color:#b83220;
+}
+
+.logo span{
+    color:#222;
+}
+
+.nav-links{
+    display:flex;
+    gap:25px;
+    list-style:none;
+}
+
+.nav-links a{
+    color:#333;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.nav-links a:hover{
+    color:#b83220;
+}
+
+.nav-buttons{
+    display:flex;
+    gap:10px;
+}
+
+.btn{
+    border:none;
+    padding:12px 18px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.btn-primary{
+    background:#b83220;
+    color:white;
+}
+
+.btn-primary:hover{
+    background:#8f2517;
+    transform:translateY(-2px);
+}
+
+.btn-outline{
+    background:white;
+    border:1px solid #b83220;
+    color:#b83220;
+}
+
+.btn-outline:hover{
+    background:#b83220;
+    color:white;
+}
+
+.menu-toggle{
+    display:none;
+    font-size:28px;
+    cursor:pointer;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:120px 20px 70px;
+
+    background:
+    linear-gradient(rgba(20,10,5,.65),rgba(20,10,5,.65)),
+    url("https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1800&q=80");
+
+    background-size:cover;
+    background-position:center;
+    color:white;
+}
+
+.hero-content{
+    max-width:850px;
+}
+
+.badge{
+    display:inline-block;
+    background:#e5a126;
+    color:#201306;
+    padding:8px 15px;
+    border-radius:30px;
+    font-weight:bold;
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:64px;
+    line-height:1.1;
+    margin-bottom:20px;
+}
+
+.hero h1 span{
+    color:#f0b33b;
+}
+
+.hero p{
+    font-size:19px;
+    line-height:1.7;
+    margin-bottom:30px;
+    color:#eee;
+}
+
+.hero-buttons{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.hero .btn-outline{
+    background:transparent;
+    color:white;
+    border-color:white;
+}
+
+/* ================= COMMON ================= */
+
+section{
+    padding:80px 20px;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+}
+
+.section-heading{
+    text-align:center;
+    margin-bottom:45px;
+}
+
+.section-heading small{
+    color:#b83220;
+    font-weight:bold;
+    text-transform:uppercase;
+    letter-spacing:2px;
+}
+
+.section-heading h2{
+    font-size:40px;
+    margin-top:10px;
+}
+
+.section-heading p{
+    color:#777;
+    max-width:650px;
+    margin:12px auto;
+    line-height:1.7;
+}
+
+/* ================= ABOUT ================= */
+
+.about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:center;
+}
+
+.about-img{
+    width:100%;
+    height:450px;
+    object-fit:cover;
+    border-radius:20px;
+}
+
+.about-text h2{
+    font-size:40px;
+    margin:12px 0 20px;
+}
+
+.about-text p{
+    color:#666;
+    line-height:1.8;
+    margin-bottom:20px;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+    margin:25px 0;
+}
+
+.stat{
+    padding:18px;
+    background:#fff;
+    border-radius:12px;
+    box-shadow:0 4px 15px rgba(0,0,0,.06);
+}
+
+.stat h3{
+    color:#b83220;
+    font-size:27px;
+}
+
+.stat p{
+    margin:5px 0 0;
+}
+
+/* ================= CATEGORIES ================= */
+
+.categories{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.category{
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 5px 18px rgba(0,0,0,.07);
+    cursor:pointer;
+    transition:.3s;
+}
+
+.category:hover{
+    transform:translateY(-7px);
+}
+
+.category img{
+    width:100%;
+    height:160px;
+    object-fit:cover;
+}
+
+.category-content{
+    padding:18px;
+    text-align:center;
+}
+
+.category-content h3{
+    margin-bottom:5px;
+}
+
+.category-content p{
+    color:#777;
+}
+
+/* ================= MENU ================= */
+
+.menu-section{
+    background:#f8efe7;
+}
+
+.menu-tabs{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:35px;
+}
+
+.menu-tab{
+    padding:10px 20px;
+    border:none;
+    border-radius:25px;
+    cursor:pointer;
+    background:white;
+    color:#444;
+    font-weight:bold;
+}
+
+.menu-tab.active,
+.menu-tab:hover{
+    background:#b83220;
+    color:white;
+}
+
+.menu-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.food-card{
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 5px 20px rgba(0,0,0,.07);
+    transition:.3s;
+}
+
+.food-card:hover{
+    transform:translateY(-5px);
+}
+
+.food-card img{
+    width:100%;
+    height:210px;
+    object-fit:cover;
+}
+
+.food-info{
+    padding:20px;
+}
+
+.food-title{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+}
+
+.food-title h3{
+    font-size:20px;
+}
+
+.price{
+    color:#b83220;
+    font-weight:bold;
+    white-space:nowrap;
+}
+
+.food-info p{
+    color:#777;
+    line-height:1.6;
+    margin:10px 0;
+    font-size:14px;
+}
+
+.veg{
+    color:green;
+    font-weight:bold;
+    font-size:13px;
+}
+
+.add-cart{
+    width:100%;
+    padding:11px;
+    border:none;
+    border-radius:7px;
+    background:#b83220;
+    color:white;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+/* ================= OFFERS ================= */
+
+.offers{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.offer{
+    padding:30px;
+    border-radius:18px;
+    color:white;
+    background:linear-gradient(135deg,#b83220,#e25d32);
+    position:relative;
+    overflow:hidden;
+}
+
+.offer:nth-child(2){
+    background:linear-gradient(135deg,#7c3f14,#c97920);
+}
+
+.offer:nth-child(3){
+    background:linear-gradient(135deg,#384d27,#708b40);
+}
+
+.offer .discount{
+    display:inline-block;
+    padding:7px 12px;
+    background:rgba(255,255,255,.2);
+    border-radius:20px;
+    margin-bottom:15px;
+    font-weight:bold;
+}
+
+.offer h3{
+    font-size:25px;
+    margin-bottom:10px;
+}
+
+.offer p{
+    line-height:1.6;
+    margin-bottom:20px;
+}
+
+/* ================= CHEF ================= */
+
+.chef{
+    background:#24170f;
+    color:white;
+}
+
+.chef-grid{
+    display:grid;
+    grid-template-columns:350px 1fr;
+    align-items:center;
+    gap:60px;
+    max-width:1000px;
+    margin:auto;
+}
+
+.chef-img{
+    width:100%;
+    height:400px;
+    object-fit:cover;
+    border-radius:20px;
+}
+
+.chef-text h2{
+    font-size:40px;
+    margin:10px 0 20px;
+}
+
+.chef-text p{
+    color:#ddd;
+    line-height:1.8;
+    margin-bottom:20px;
+}
+
+/* ================= GALLERY ================= */
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.gallery img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    border-radius:12px;
+    transition:.3s;
+}
+
+.gallery img:hover{
+    transform:scale(1.03);
+}
+
+/* ================= REVIEWS ================= */
+
+.reviews{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.review{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 5px 18px rgba(0,0,0,.06);
+}
+
+.stars{
+    color:#e5a126;
+    font-size:20px;
+    margin-bottom:12px;
+}
+
+.review p{
+    color:#666;
+    line-height:1.7;
+    margin-bottom:15px;
+}
+
+/* ================= BOOKING ================= */
+
+.booking{
+    background:#f8efe7;
+}
+
+.booking-box{
+    max-width:900px;
+    margin:auto;
+    background:white;
+    padding:35px;
+    border-radius:18px;
+    box-shadow:0 8px 30px rgba(0,0,0,.08);
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+}
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+}
+
+.form-group.full{
+    grid-column:1/-1;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+    padding:13px;
+    border:1px solid #ddd;
+    border-radius:8px;
+    outline:none;
+    font-size:15px;
+}
+
+.form-group textarea{
+    min-height:110px;
+    resize:vertical;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+    border-color:#b83220;
+}
+
+/* ================= CONTACT ================= */
+
+.contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+}
+
+.contact-card{
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 5px 18px rgba(0,0,0,.06);
+}
+
+.contact-item{
+    display:flex;
+    gap:15px;
+    margin:22px 0;
+}
+
+.contact-icon{
+    width:45px;
+    height:45px;
+    background:#f8e3d9;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+/* ================= CART ================= */
+
+.cart-button{
+    position:fixed;
+    right:25px;
+    bottom:25px;
+    z-index:2000;
+    width:60px;
+    height:60px;
+    border:none;
+    border-radius:50%;
+    background:#b83220;
+    color:white;
+    font-size:25px;
+    cursor:pointer;
+    box-shadow:0 5px 20px rgba(0,0,0,.25);
+}
+
+.cart-count{
+    position:absolute;
+    top:-5px;
+    right:-5px;
+    background:#e5a126;
+    color:#111;
+    width:23px;
+    height:23px;
+    border-radius:50%;
+    font-size:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+}
+
+.cart-panel{
+    position:fixed;
+    top:0;
+    right:-420px;
+    width:400px;
+    max-width:95%;
+    height:100vh;
+    background:white;
+    z-index:3000;
+    padding:25px;
+    box-shadow:-5px 0 25px rgba(0,0,0,.2);
+    transition:.4s;
+    overflow-y:auto;
+}
+
+.cart-panel.active{
+    right:0;
+}
+
+.cart-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.close-cart{
+    border:none;
+    background:none;
+    font-size:25px;
+    cursor:pointer;
+}
+
+.cart-item{
+    display:flex;
+    justify-content:space-between;
+    border-bottom:1px solid #eee;
+    padding:15px 0;
+}
+
+.cart-total{
+    margin-top:25px;
+    padding-top:20px;
+    border-top:2px solid #ddd;
+}
+
+.total-row{
+    display:flex;
+    justify-content:space-between;
+    margin:10px 0;
+}
+
+.grand-total{
+    font-size:22px;
+    font-weight:bold;
+    color:#b83220;
+}
+
+/* ================= WHATSAPP ================= */
+
+.whatsapp{
+    position:fixed;
+    left:25px;
+    bottom:25px;
+    width:55px;
+    height:55px;
+    background:#25d366;
+    color:white;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:27px;
+    text-decoration:none;
+    z-index:1500;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    background:#1d120c;
+    color:white;
+    padding:60px 20px 25px;
+}
+
+.footer-grid{
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1fr;
+    gap:40px;
+}
+
+.footer-grid h3{
+    margin-bottom:18px;
+}
+
+.footer-grid p,
+.footer-grid a{
+    color:#bbb;
+    text-decoration:none;
+    line-height:2;
+    display:block;
+}
+
+.footer-grid a:hover{
+    color:white;
+}
+
+.copyright{
+    max-width:1200px;
+    margin:40px auto 0;
+    padding-top:20px;
+    border-top:1px solid #44342b;
+    text-align:center;
+    color:#999;
+}
+
+/* ================= TOAST ================= */
+
+.toast{
+    position:fixed;
+    left:50%;
+    bottom:30px;
+    transform:translate(-50%,100px);
+    background:#222;
+    color:white;
+    padding:14px 22px;
+    border-radius:8px;
+    z-index:5000;
+    transition:.4s;
+}
+
+.toast.show{
+    transform:translate(-50%,0);
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:900px){
+
+    .nav-links,
+    .nav-buttons{
+        display:none;
+    }
+
+    .menu-toggle{
+        display:block;
+    }
+
+    .hero h1{
+        font-size:45px;
+    }
+
+    .categories{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .menu-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .offers{
+        grid-template-columns:1fr;
+    }
+
+    .gallery{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .reviews{
+        grid-template-columns:1fr;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+@media(max-width:650px){
+
+    section{
+        padding:60px 15px;
+    }
+
+    .hero{
+        min-height:90vh;
+    }
+
+    .hero h1{
+        font-size:36px;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+
+    .about-grid,
+    .contact-grid,
+    .chef-grid{
+        grid-template-columns:1fr;
+    }
+
+    .about-img{
+        height:300px;
+    }
+
+    .chef-img{
+        height:350px;
+    }
+
+    .menu-grid{
+        grid-template-columns:1fr;
+    }
+
+    .categories{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .gallery{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .gallery img{
+        height:150px;
+    }
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .form-group.full{
+        grid-column:auto;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+
+    .cart-button{
+        right:18px;
+        bottom:18px;
+    }
+
+    .whatsapp{
+        left:18px;
+        bottom:18px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+<div class="navbar">
+
+<div class="logo">
+🌶️ Spice <span>Garden</span>
+</div>
+
+<ul class="nav-links">
+<li><a href="#home">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#menu">Menu</a></li>
+<li><a href="#offers">Offers</a></li>
+<li><a href="#gallery">Gallery</a></li>
+<li><a href="#reviews">Reviews</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+
+<div class="nav-buttons">
+<a href="#booking">
+<button class="btn btn-primary">Book a Table</button>
+</a>
+
+<button class="btn btn-outline" onclick="openCart()">
+🛒 Cart
+</button>
+</div>
+
+<div class="menu-toggle" onclick="toggleMobileMenu()">
+☰
+</div>
+
+</div>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+
+<div class="hero-content">
+
+<div class="badge">
+● Open Now
+</div>
+
+<h1>
+Taste the <span>Tradition</span> of India
+</h1>
+
+<p>
+Authentic flavours, fresh ingredients and unforgettable
+dining experiences — prepared with passion by our chefs.
+</p>
+
+<div class="hero-buttons">
+
+<a href="#menu">
+<button class="btn btn-primary">
+🍛 Explore Menu
+</button>
+</a>
+
+<a href="#booking">
+<button class="btn btn-outline">
+📅 Book a Table
+</button>
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section id="about">
+
+<div class="container">
+
+<div class="about-grid">
+
+<img
+class="about-img"
+src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1000&q=80"
+alt="Restaurant interior"
+>
+
+<div class="about-text">
+
+<small>OUR STORY</small>
+
+<h2>
+A Taste of India,
+Made With Passion
+</h2>
+
+<p>
+At Spice Garden, we bring the authentic flavours of India
+to your table. Our chefs combine traditional recipes,
+fresh ingredients and modern presentation to create
+memorable dining experiences.
+</p>
+
+<p>
+From aromatic biryanis to creamy curries and delicious
+desserts, every dish is prepared with care.
+</p>
+
+<div class="stats">
+
+<div class="stat">
+<h3>10+</h3>
+<p>Years Experience</p>
+</div>
+
+<div class="stat">
+<h3>50+</h3>
+<p>Signature Dishes</p>
+</div>
+
+<div class="stat">
+<h3>25K+</h3>
+<p>Happy Customers</p>
+</div>
+
+<div class="stat">
+<h3>4.8★</h3>
+<p>Customer Rating</p>
+</div>
+
+</div>
+
+<button class="btn btn-primary">
+Read Our Story
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= CATEGORIES ================= -->
+
+<section style="background:#f8efe7">
+
+<div class="container">
+
+<div class="section-heading">
+
+<small>EXPLORE</small>
+
+<h2>What Would You Like?</h2>
+
+<p>
+Explore our delicious selection of Indian food,
+snacks, desserts and refreshing drinks.
+</p>
+
+</div>
+
+<div class="categories">
+
+<div class="category">
+<img src="https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?auto=format&fit=crop&w=600&q=80">
+<div class="category-content">
+<h3>🍛 Main Course</h3>
+<p>Rich & delicious curries</p>
+</div>
+</div>
+
+<div class="category">
+<img src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&w=600&q=80">
+<div class="category-content">
+<h3>🥘 Starters</h3>
+<p>Perfect beginning</p>
+</div>
+</div>
+
+<div class="category">
+<img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=600&q=80">
+<div class="category-content">
+<h3>🥬 Pure Veg</h3>
+<p>Fresh vegetarian dishes</p>
+</div>
+</div>
+
+<div class="category">
+<img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=600&q=80">
+<div class="category-content">
+<h3>🍰 Desserts</h3>
+<p>Sweet endings</p>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= MENU ================= -->
+
+<section class="menu-section" id="menu">
+
+<div class="container">
+
+<div class="section-heading">
+
+<small>OUR MENU</small>
+
+<h2>Delicious Food Menu</h2>
+
+<p>
+Freshly prepared dishes using quality ingredients
+and authentic Indian spices.
+</p>
+
+</div>
+
+
+<div class="menu-tabs">
+
+<button class="menu-tab active" onclick="filterMenu('all',this)">
+All
+</button>
+
+<button class="menu-tab" onclick="filterMenu('starter',this)">
+Starters
+</button>
+
+<button class="menu-tab" onclick="filterMenu('main',this)">
+Main Course
+</button>
+
+<button class="menu-tab" onclick="filterMenu('bread',this)">
+Breads
+</button>
+
+<button class="menu-tab" onclick="filterMenu('rice',this)">
+Rice
+</button>
+
+<button class="menu-tab" onclick="filterMenu('dessert',this)">
+Desserts
+</button>
+
+</div>
+
+
+<div class="menu-grid">
+
+
+<!-- FOOD 1 -->
+
+<div class="food-card" data-category="main">
+
+<img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=800&q=80">
+
+<div class="food-info">
+
+<div class="food-title">
+<h3>Paneer Butter Masala</h3>
+<span class="price">₹249</span>
+</div>
+
+<span class="veg">● Vegetarian</span>
+
+<p>
+Soft paneer cooked in a creamy tomato
+and butter gravy.
+</p>
+
+<button class="add-cart"
+onclick="addToCart('Paneer Butter Masala',249)">
+Add to Order
+</button>
+
+</div>
+</div>
+
+
+<!-- FOOD 2 -->
+
+<div class="food-card" data-category="main">
+
+<img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=800&q=80">
+
+<div class="food-info">
+
+<div class="food-title">
+<h3>Dal Makhani</h3>
+<span class="price">₹199</span>
+</div>
+
+<span class="veg">● Vegetarian</span>
+
+<p>
+Slow-cooked black lentils with butter
+and aromatic spices.
+</p>
+
+<button class="add-cart"
+onclick="addToCart('Dal Makhani',199)">
+Add to Order
+</button>
+
+</div>
+</div>
+
+
+<!-- FOOD 3 -->
+
+<div class="food-card" data-category="starter">
+
+<img src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&w=800&q=80">
+
+<div class="food-info">
+
+<div class="food-title">
+<h3>Paneer Tikka</h3>
+<span class="price">₹229</span>
+</div>
+
+<span class="veg">● Vegetarian</span>
+
+<p>
+Char-grilled paneer with onions,
+capsicum and Indian spices.
+</p>
+
+<button class="add-cart"
+onclick="addToCart('Paneer Tikka',229)">
+Add to Order
+</button>
+
+</div>
+</div>
+
+
+<!-- FOOD 4 -->
+
+<div class="food-card" data-category="bread">
+
+<img src="https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?auto=format&fit=crop&w=800&q=80">
+
+<div class="food-info">
+
+<div class="food-title">
+<h3>Butter Naan</h3>
+<span class="price">₹49</span>
+</div>
+
+<span class="veg">● Vegetarian</span>
+
+<p>
+Soft Indian naan brushed with
+delicious melted butter.
+</p>
+
+<button class="add-cart"
+onclick="addToCart('Butter Naan',49)">
+Add to Order
+</button>
+
+</div>
+</div>
+
+
+<!-- FOOD 5 -->
+
+<div class="food-card" data-category="rice">
+
+<img src="https://images.unsplash.com/photo-1563379091339-03246963d51a?auto=format&fit=crop&w=800&q=80">
+
+<div class="food-info">
+
+<div class="food-title">
+<h3>Veg Biryani</h3>
+<span class="price">₹219</span>
+</div>
+
+<span class="veg">● Vegetarian</span>
+
+<p>
+Aromatic basmati rice cooked with
+fresh vegetables and spices.
+</p>
+
+<button class="add-cart"
+onclick="addToCart('Veg Biryani',219)">
+Add to Order
+</button>
+
+</div>
+</div>
+
+
+<!-- FOOD 6 -->
+
+<div class="food-card" data-category="rice">
+
+<img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=800&q=80">
+
+<div class="food-info">
+
+<div class="food-title">
+<h3>Chicken Biryani</h3>
+<span class="price">₹299</span>
+</div>
+
+<p>
+Fragrant basmati rice with tender
+chicken and traditional spices.
+</p>
+
+<button class="add-cart"
+onclick="addToCart('Chicken Biryani',299)">
+Add to Order
+</button>
+
+</div>
+</div>
+
+
+<!-- FOOD 7 -->
+
+<div class="food-card" data-category="dessert">
+
+<img src="https://images.unsplash.com/photo-1666190094760-7a5c7e6b6b2d?auto=format&fit=crop&w=800&q=80">
+
+<div class="food-info">
+
+<div class="food-title">
+<h3>Gulab Jamun</h3>
+<span class="price">₹89</span>
+</div>
+
+<span class="veg">● Vegetarian</span>
+
+<p>
+Soft sweet dumplings served
+with aromatic sugar syrup.
+</p>
+
+<button class="add-cart"
+onclick="addToCart('Gulab Jamun',89)">
+Add to Order
+</button>
+
+</div>
+</div>
+
+
+<!-- FOOD 8 -->
+
+<div class="food-card" data-category="starter">
+
+<img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80">
+
+<div class="food-info">
+
+<div class="food-title">
+<h3>Samosa</h3>
+<span class="price">₹69</span>
+</div>
+
+<span class="veg">● Vegetarian</span>
+
+<p>
+Crispy pastry filled with spiced
+potatoes and peas.
+</p>
+
+<button class="add-cart"
+onclick="addToCart('Samosa',69)">
+Add to Order
+</button>
+
+</div>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= OFFERS ================= -->
+
+<section id="offers">
+
+<div class="container">
+
+<div class="section-heading">
+
+<small>DEALS</small>
+
+<h2>Special Offers</h2>
+
+</div>
+
+<div class="offers">
+
+<div class="offer">
+
+<span class="discount">20% OFF</span>
+
+<h3>Family Feast</h3>
+
+<p>
+Enjoy a delicious family meal with
+our special family combo.
+</p>
+
+<button class="btn btn-outline">
+Order Now
+</button>
+
+</div>
+
+
+<div class="offer">
+
+<span class="discount">WEEKEND</span>
+
+<h3>Weekend Special</h3>
+
+<p>
+Buy 2 main courses and get
+1 dessert absolutely free.
+</p>
+
+<button class="btn btn-outline">
+Order Now
+</button>
+
+</div>
+
+
+<div class="offer">
+
+<span class="discount">STUDENTS</span>
+
+<h3>Student Offer</h3>
+
+<p>
+Get 10% OFF with a valid
+student ID.
+</p>
+
+<button class="btn btn-outline">
+Order Now
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= CHEF ================= -->
+
+<section class="chef">
+
+<div class="chef-grid">
+
+<img
+class="chef-img"
+src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=900&q=80"
+alt="Chef"
+>
+
+<div class="chef-text">
+
+<small>OUR CHEF</small>
+
+<h2>Meet Chef Arjun Sharma</h2>
+
+<p>
+With more than 15 years of culinary experience,
+Chef Arjun specializes in authentic Indian cuisine.
+His passion is bringing traditional recipes to life
+while adding a modern touch.
+</p>
+
+<button class="btn btn-primary">
+Meet Our Team
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= GALLERY ================= -->
+
+<section id="gallery">
+
+<div class="container">
+
+<div class="section-heading">
+
+<small>OUR GALLERY</small>
+
+<h2>A Look Inside Spice Garden</h2>
+
+</div>
+
+<div class="gallery">
+
+<img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=700&q=80">
+
+<img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=700&q=80">
+
+<img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=700&q=80">
+
+<img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=700&q=80">
+
+<img src="https://images.unsplash.com/photo-1563379091339-03246963d51a?auto=format&fit=crop&w=700&q=80">
+
+<img src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=700&q=80">
+
+<img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=700&q=80">
+
+<img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=700&q=80">
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= REVIEWS ================= -->
+
+<section id="reviews" style="background:#f8efe7">
+
+<div class="container">
+
+<div class="section-heading">
+
+<small>REVIEWS</small>
+
+<h2>What Our Customers Say</h2>
+
+</div>
+
+<div class="reviews">
+
+<div class="review">
+
+<div class="stars">★★★★★</div>
+
+<p>
+“Absolutely delicious food and excellent service.
+The paneer butter masala was amazing!”
+</p>
+
+<strong>— Rahul Sharma</strong>
+
+</div>
+
+
+<div class="review">
+
+<div class="stars">★★★★★</div>
+
+<p>
+“The ambience and food quality were amazing.
+Perfect place for a family dinner.”
+</p>
+
+<strong>— Priya Verma</strong>
+
+</div>
+
+
+<div class="review">
+
+<div class="stars">★★★★★</div>
+
+<p>
+“One of the best dining experiences I've had.
+Highly recommended!”
+</p>
+
+<strong>— Amit Patel</strong>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= BOOKING ================= -->
+
+<section class="booking" id="booking">
+
+<div class="container">
+
+<div class="section-heading">
+
+<small>RESERVATION</small>
+
+<h2>Book Your Table</h2>
+
+<p>
+Reserve your table and enjoy a memorable dining experience.
+</p>
+
+</div>
+
+<div class="booking-box">
+
+<form id="bookingForm">
+
+<div class="form-grid">
+
+<div class="form-group">
+<label>Full Name</label>
+<input type="text" id="name" required placeholder="Enter your name">
+</div>
+
+<div class="form-group">
+<label>Phone Number</label>
+<input type="tel" id="phone" required placeholder="+91 XXXXX XXXXX">
+</div>
+
+<div class="form-group">
+<label>Date</label>
+<input type="date" id="date" required>
+</div>
+
+<div class="form-group">
+<label>Time</label>
+<input type="time" id="time" required>
+</div>
+
+<div class="form-group">
+<label>Guests</label>
+
+<select id="guests">
+
+<option>1 Person</option>
+<option>2 People</option>
+<option>3 People</option>
+<option>4 People</option>
+<option>5 People</option>
+<option>6+ People</option>
+
+</select>
+
+</div>
+
+<div class="form-group">
+<label>Occasion</label>
+
+<select>
+
+<option>Regular Dining</option>
+<option>Birthday</option>
+<option>Anniversary</option>
+<option>Family Dinner</option>
+<option>Business Dinner</option>
+
+</select>
+
+</div>
+
+<div class="form-group full">
+
+<label>Special Request</label>
+
+<textarea placeholder="Any special request?"></textarea>
+
+</div>
+
+<div class="form-group full">
+
+<button class="btn btn-primary" type="submit">
+Reserve My Table
+</button>
+
+</div>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= CONTACT ================= -->
+
+<section id="contact">
+
+<div class="container">
+
+<div class="section-heading">
+
+<small>CONTACT</small>
+
+<h2>Visit Us</h2>
+
+</div>
+
+<div class="contact-grid">
+
+<div class="contact-card">
+
+<h2>Restaurant Information</h2>
+
+<div class="contact-item">
+
+<div class="contact-icon">📍</div>
+
+<div>
+<strong>Address</strong>
+<p>123 Food Street, Bhopal, Madhya Pradesh</p>
+</div>
+
+</div>
+
+<div class="contact-item">
+
+<div class="contact-icon">📞</div>
+
+<div>
+<strong>Phone</strong>
+<p>+91 98765 43210</p>
+</div>
+
+</div>
+
+<div class="contact-item">
+
+<div class="contact-icon">✉️</div>
+
+<div>
+<strong>Email</strong>
+<p>hello@spicegarden.in</p>
+</div>
+
+</div>
+
+<div class="contact-item">
+
+<div class="contact-icon">🕐</div>
+
+<div>
+<strong>Opening Hours</strong>
+<p>Mon–Thu: 11:00 AM – 10:30 PM</p>
+<p>Fri–Sun: 11:00 AM – 11:30 PM</p>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="contact-card">
+
+<h2>Send Us a Message</h2>
+
+<form id="contactForm">
+
+<div class="form-group">
+<label>Name</label>
+<input type="text" required placeholder="Your name">
+</div>
+
+<br>
+
+<div class="form-group">
+<label>Email</label>
+<input type="email" required placeholder="Your email">
+</div>
+
+<br>
+
+<div class="form-group">
+<label>Message</label>
+<textarea required placeholder="Your message"></textarea>
+</div>
+
+<br>
+
+<button class="btn btn-primary">
+Send Message
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<div class="footer-grid">
+
+<div>
+
+<div class="logo">
+🌶️ Spice Garden
+</div>
+
+<br>
+
+<p>
+Authentic Indian flavours,
+fresh ingredients and unforgettable
+dining experiences.
+</p>
+
+</div>
+
+
+<div>
+
+<h3>Quick Links</h3>
+
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#menu">Menu</a>
+<a href="#offers">Offers</a>
+
+</div>
+
+
+<div>
+
+<h3>Information</h3>
+
+<a href="#booking">Book a Table</a>
+<a href="#gallery">Gallery</a>
+<a href="#reviews">Reviews</a>
+<a href="#contact">Contact</a>
+
+</div>
+
+
+<div>
+
+<h3>Follow Us</h3>
+
+<a href="#">📸 Instagram</a>
+<a href="#">📘 Facebook</a>
+<a href="#">▶️ YouTube</a>
+
+</div>
+
+</div>
+
+
+<div class="copyright">
+
+© 2026 Spice Garden Restaurant.
+All Rights Reserved.
+
+</div>
+
+</footer>
+
+
+<!-- ================= CART BUTTON ================= -->
+
+<button class="cart-button" onclick="openCart()">
+
+🛒
+
+<span class="cart-count" id="cartCount">
+0
+</span>
+
+</button>
+
+
+<!-- ================= WHATSAPP ================= -->
+
+<a
+class="whatsapp"
+href="https://wa.me/919876543210?text=Hello%20Spice%20Garden%20Restaurant%2C%20I%20would%20like%20to%20know%20more%20about%20your%20menu."
+target="_blank"
+>
+💬
+</a>
+
+
+<!-- ================= CART PANEL ================= -->
+
+<div class="cart-panel" id="cartPanel">
+
+<div class="cart-header">
+
+<h2>Your Order</h2>
+
+<button
+class="close-cart"
+onclick="closeCart()">
+×
+</button>
+
+</div>
+
+<div id="cartItems">
+
+<p>Your cart is empty.</p>
+
+</div>
+
+<div class="cart-total">
+
+<div class="total-row">
+<span>Subtotal</span>
+<strong id="subtotal">₹0</strong>
+</div>
+
+<div class="total-row">
+<span>Tax</span>
+<strong id="tax">₹0</strong>
+</div>
+
+<div class="total-row grand-total">
+<span>Total</span>
+<strong id="total">₹0</strong>
+</div>
+
+<br>
+
+<button
+class="btn btn-primary"
+style="width:100%"
+onclick="checkout()"
+>
+Proceed to Checkout
+</button>
+
+</div>
+
+</div>
+
+
+<!-- TOAST -->
+
+<div class="toast" id="toast"></div>
+
+
+<script>
+
+/* ================= CART ================= */
+
+let cart = [];
+
+
+function addToCart(name,price){
+
+    const existing = cart.find(item => item.name === name);
+
+    if(existing){
+
+        existing.quantity++;
+
+    }else{
+
+        cart.push({
+            name:name,
+            price:price,
+            quantity:1
+        });
+
+    }
+
+    updateCart();
+
+    showToast(name + " added to your order!");
+
+}
+
+
+function updateCart(){
+
+    const container =
+        document.getElementById("cartItems");
+
+    const count =
+        document.getElementById("cartCount");
+
+    const subtotalElement =
+        document.getElementById("subtotal");
+
+    const taxElement =
+        document.getElementById("tax");
+
+    const totalElement =
+        document.getElementById("total");
+
+
+    if(cart.length === 0){
+
+        container.innerHTML =
+            "<p>Your cart is empty.</p>";
+
+    }else{
+
+        container.innerHTML =
+            cart.map((item,index)=>`
+
+            <div class="cart-item">
+
+                <div>
+                    <strong>${item.name}</strong>
+                    <br>
+                    ₹${item.price} × ${item.quantity}
+                </div>
+
+                <div>
+
+                    <strong>
+                    ₹${item.price * item.quantity}
+                    </strong>
+
+                    <br>
+
+                    <button
+                    onclick="removeItem(${index})"
+                    style="border:none;background:none;color:#b83220;cursor:pointer"
+                    >
+                    Remove
+                    </button>
+
+                </div>
+
+            </div>
+
+            `).join("");
+
+    }
+
+
+    let subtotal =
+        cart.reduce(
+            (sum,item)=>
+            sum + item.price * item.quantity,
+            0
+        );
+
+    let tax =
+        Math.round(subtotal * 0.05);
+
+    let total =
+        subtotal + tax;
+
+
+    const itemCount =
+        cart.reduce(
+            (sum,item)=>
+            sum + item.quantity,
+            0
+        );
+
+
+    count.textContent = itemCount;
+
+    subtotalElement.textContent =
+        "₹" + subtotal;
+
+    taxElement.textContent =
+        "₹" + tax;
+
+    totalElement.textContent =
+        "₹" + total;
+}
+
+
+function removeItem(index){
+
+    cart.splice(index,1);
+
+    updateCart();
+
+}
+
+
+function openCart(){
+
+    document
+        .getElementById("cartPanel")
+        .classList.add("active");
+
+}
+
+
+function closeCart(){
+
+    document
+        .getElementById("cartPanel")
+        .classList.remove("active");
+
+}
+
+
+function checkout(){
+
+    if(cart.length === 0){
+
+        showToast("Your cart is empty!");
+
+        return;
+
+    }
+
+    showToast(
+        "Checkout system is ready to connect with a payment gateway."
+    );
+
+}
+
+
+/* ================= MENU FILTER ================= */
+
+function filterMenu(category,button){
+
+    document
+        .querySelectorAll(".menu-tab")
+        .forEach(tab =>
+            tab.classList.remove("active")
+        );
+
+    button.classList.add("active");
+
+
+    document
+        .querySelectorAll(".food-card")
+        .forEach(card=>{
+
+            if(
+                category === "all" ||
+                card.dataset.category === category
+            ){
+
+                card.style.display = "block";
+
+            }else{
+
+                card.style.display = "none";
+
+            }
+
+        });
+
+}
+
+
+/* ================= BOOKING ================= */
+
+document
+    .getElementById("bookingForm")
+    .addEventListener("submit",function(e){
+
+        e.preventDefault();
+
+        const name =
+            document.getElementById("name").value;
+
+        showToast(
+            "Thank you " +
+            name +
+            "! Your table reservation request has been received."
+        );
+
+        this.reset();
+
+    });
+
+
+/* ================= CONTACT ================= */
+
+document
+    .getElementById("contactForm")
+    .addEventListener("submit",function(e){
+
+        e.preventDefault();
+
+        showToast(
+            "Your message has been sent successfully!"
+        );
+
+        this.reset();
+
+    });
+
+
+/* ================= TOAST ================= */
+
+function showToast(message){
+
+    const toast =
+        document.getElementById("toast");
+
+    toast.textContent = message;
+
+    toast.classList.add("show");
+
+    setTimeout(()=>{
+
+        toast.classList.remove("show");
+
+    },3000);
+
+}
+
+
+/* ================= MOBILE MENU ================= */
+
+function toggleMobileMenu(){
+
+    const nav =
+        document.querySelector(".nav-links");
+
+    if(
+        nav.style.display === "flex"
+    ){
+
+        nav.style.display = "";
+
+    }else{
+
+        nav.style.display = "flex";
+
+        nav.style.position = "absolute";
+        nav.style.top = "75px";
+        nav.style.left = "0";
+        nav.style.right = "0";
+        nav.style.background = "white";
+        nav.style.padding = "20px";
+        nav.style.flexDirection = "column";
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
